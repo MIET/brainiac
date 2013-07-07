@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>True answers:</b>
+  <%= @price.true_answers %>
+</p>
+
+<p>
+  <b>Stats:</b>
+  <%= @price.stats %>
+</p>
+
+<p>
+  <b>Steps:</b>
+  <%= @price.steps %>
+</p>
+
+
+<%= link_to 'Edit', edit_price_path(@price) %> |
+<%= link_to 'Back', prices_path %>

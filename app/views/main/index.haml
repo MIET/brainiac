@@ -1,0 +1,15 @@
+.main_body.full_window
+  - if @reload
+    %input.reload_action{type: 'hidden', name: 'reload', value: 'true'}
+  .offset6
+    .row.first_button.span4
+      .navigate
+        %a{href: "/questions"}
+          .question.navigate
+        .stats.navigate
+        %a{href: "/parameters/rules"}
+          .rules.navigate
+        %a{href: "/parameters/about"}
+          .about.navigate
+        %a{href: "/admins"}
+          .admin.offset1

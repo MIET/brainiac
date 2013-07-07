@@ -1,0 +1,19 @@
+%a{href: '/admin/questions'}
+  %input.btn.btn-primary.span3{type: "button", id: "questions_manage",value: "Управление вопросами"}
+%a{href: '/admin/steps'}
+  %input.btn.btn-primary.span3{type: "button", id: "steps_manage",value: "Управление этапами"}
+%a{href: '/admin/users'}
+  %input.btn.btn-primary.span3{type: "button", id: "users_manage",value: "Управление пользователями"}
+%a{href: '/admin/parameters/rules/edit'}
+  %input.btn.btn-primary.span3{type: "button", id: "rules_manage",value: "Редактировать «Правила»"}
+%a{href: '/admin/parameters/about/edit'}
+  %input.btn.btn-primary.span3{type: "button", id: "about_manage",value: "Редактировать «Авторы»"}
+
+:javascript
+  jQuery(document).ready(function(){
+    var current = location.href.match(/(questions)|(steps)|(rules)|(about)|(users)/)[0];
+    if (current){
+      console.log(jQuery("#"+current+"_manage").removeClass('btn-primary').addClass('btn-inverse'));
+    }
+    console.log(current);
+  });

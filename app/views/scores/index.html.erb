@@ -1,0 +1,33 @@
+<h1>Listing scores</h1>
+
+<table>
+  <tr>
+    <th>Parameters</th>
+    <th>Errors</th>
+    <th>Prices</th>
+    <th>True answers</th>
+    <th>Stats</th>
+    <th>Steps</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @scores.each do |score| %>
+  <tr>
+    <td><%= score.parameters %></td>
+    <td><%= score.errors %></td>
+    <td><%= score.prices %></td>
+    <td><%= score.true_answers %></td>
+    <td><%= score.stats %></td>
+    <td><%= score.steps %></td>
+    <td><%= link_to 'Show', score %></td>
+    <td><%= link_to 'Edit', edit_score_path(score) %></td>
+    <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Score', new_score_path %>

@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+@import "bootstrap"
+@import "bootstrap-datetimepicker.min.css"
+
+@font-face
+  font-family: "Archangelsk"
+  src: url("/fonts/Archangelsk.ttf") format('truetype')
+
+.main_body
+  background-image: url("backgrounds/background_main.jpg")
+.question_body
+  background-image: url("backgrounds/background_question.jpg")
+.rules_body
+  background-image: url("backgrounds/background_rules.jpg")
+.about_body
+  background-image: url("backgrounds/background_about.jpg")
+.common_body
+  background-image: url("backgrounds/background_main_2.jpg")
+.admin_body
+  background-image: url("cells.jpg")
+
+.full_window
+  height: 100%
+  width: 100%
+  position: absolute
+  top: 0px
+  left: 0px
+
+  .message
+    font-family: "Archangelsk"
+    margin-top: 160px
+    font-size: 1.4em
+    width: 450px
+
+.first_button
+  margin-top: 160px
+
+.question
+  background: url("buttons/question.jpg")
+
+  &:hover
+    background: url("buttons/qustion_l.jpg") no-repeat
+  &:active
+    background: url("buttons/qustion_d.jpg") no-repeat
+
+.stats
+  background: url("buttons/stats.jpg")
+
+  &:hover
+    background: url("buttons/stats_l.jpg") no-repeat
+  &:active
+    background: url("buttons/stats_d.jpg") no-repeat
+
+.rules
+  background: url("buttons/rules.jpg")
+
+  &:hover
+    background: url("buttons/rules_l.jpg") no-repeat
+  &:active
+    background: url("buttons/rules_d.jpg") no-repeat
+
+.about
+  background: url("buttons/about.jpg")
+
+  &:hover
+    background: url("buttons/about_l.jpg") no-repeat
+  &:active
+    background: url("buttons/about_d.jpg") no-repeat
+
+.back
+  background: url("buttons/back.jpg")
+  margin-top: 450px
+  height: 40px
+
+  &:hover
+    background: url("buttons/back_l.jpg") no-repeat
+  &:active
+    background: url("buttons/back_d.jpg") no-repeat
+
+.admin
+  height: 50px
+  background: url("buttons/admin.jpg") no-repeat
+  margin-top: 20px
+
+  &:active
+    background: url("buttons/admin_d.jpg") no-repeat
+
+.navigate
+  height: 60px
+  background-size: contain
+  background-repeat: no-repeat
+  border: 0
+  cursor: pointer
+  margin-left: 15px
+
+a
+  outline: none
+
+.no-hover
+  &:hover
+    text-decoration: none
+    background-color: transparent
+    color: transparent
+
+body
+  height: 800px
+  widows: 600px
+
+.message-container
+  position: absolute
+  top: 0
+  left: 0
+  height: 450px
+
+.center-text
+  text-align: center
