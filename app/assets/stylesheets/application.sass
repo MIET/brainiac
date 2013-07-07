@@ -1,0 +1,179 @@
+/*
+ *= require_self
+ *= require_tree .
+ */
+@import "bootstrap"
+@import "bootstrap-datetimepicker.min.css"
+
+@font-face
+  font-family: "Archangelsk"
+  src: url("/fonts/Archangelsk.ttf") format('truetype')
+
+.main_body
+  background-image: image-url("backgrounds/background_main.jpg")
+.question_body
+  background-image: image-url("backgrounds/background_question.jpg")
+.rules_body
+  background-image: image-url("backgrounds/background_rules.jpg")
+.about_body
+  background-image: image-url("backgrounds/background_about.jpg")
+.common_body
+  background-image: image-url("backgrounds/background_main_2.jpg")
+.admin_body
+  background-image: image-url("cells.jpg")
+
+.full_window
+  height: 100%
+  width: 100%
+  position: absolute
+  top: 0px
+  left: 0px
+
+  .message
+    font-family: "Archangelsk"
+    margin-top: 120px
+    font-size: 1.4em
+    width: 450px
+
+.first_button
+  margin-top: 160px
+
+.question
+  background: image-url("buttons/question.jpg")
+
+  &:hover
+    background: image-url("buttons/qustion_l.jpg") no-repeat
+  &:active
+    background: image-url("buttons/qustion_d.jpg") no-repeat
+
+.stats
+  background: image-url("buttons/stats.jpg")
+
+  &:hover
+    background: image-url("buttons/stats_l.jpg") no-repeat
+  &:active
+    background: image-url("buttons/stats_d.jpg") no-repeat
+
+.rules
+  background: image-url("buttons/rules.jpg")
+
+  &:hover
+    background: image-url("buttons/rules_l.jpg") no-repeat
+  &:active
+    background: image-url("buttons/rules_d.jpg") no-repeat
+
+.about
+  background: image-url("buttons/about.jpg")
+
+  &:hover
+    background: image-url("buttons/about_l.jpg") no-repeat
+  &:active
+    background: image-url("buttons/about_d.jpg") no-repeat
+
+.back
+  background: image-url("buttons/back.jpg")
+  margin-top: 450px
+  height: 40px
+
+  &:hover
+    background: image-url("buttons/back_l.jpg") no-repeat
+    background-size: cover
+    height: 40px
+    width: 120px
+  &:active
+    background: image-url("buttons/back_d.jpg") no-repeat
+    background-size: cover
+    height: 40px
+    width: 120px
+
+  &.question
+    margin-top: 0px
+
+.admin
+  height: 50px
+  background: image-url("buttons/admin.jpg") no-repeat
+  margin-top: 20px
+
+  &:active
+    background: image-url("buttons/admin_d.jpg") no-repeat
+
+.ok
+  background: image-url("buttons/ok.jpg")
+  //margin-top: 450px
+  height: 40px
+
+  &:active
+    background: image-url("buttons/ok_d.jpg") no-repeat
+    background-size: cover
+    height: 40px
+
+.navigate
+  height: 60px
+  background-size: contain
+  background-repeat: no-repeat
+  border: 0
+  cursor: pointer
+  margin-left: 15px
+
+  &.back
+    height: 40px
+
+a
+  outline: none
+
+.no-hover
+  &:hover
+    text-decoration: none
+    background-color: transparent
+    color: transparent
+
+.return_to_main
+  margin-top: 150px
+
+body
+  height: 800px
+  widows: 600px
+
+.message-container
+  position: absolute
+  top: 0
+  left: 0
+  height: 450px
+
+.center-text
+  text-align: center
+
+.answer-form
+  margin-top: 470px
+
+.stats_table
+  margin-top: 100px
+  margin-left: 50px
+
+.user_parameter
+  max-width: 450px
+  width: 450px
+  min-width: 450px
+  max-height: 250px
+  height: 250px
+  min-height: 250px
+  background: transparent
+  font-family: 'Archangelsk'
+  margin-top: 0px !important
+
+.attach
+  max-height: 450px
+  max-width: 450px
+
+.question_content
+  margin-left: 70px
+  margin-top: 100px
+  max-width: 450px
+  width: 450px
+  min-width: 450px
+  max-height: 350px
+  height: 350px
+  min-height: 350px
+  background: transparent
+  overflow-y: auto
+  overflow-x: hidden

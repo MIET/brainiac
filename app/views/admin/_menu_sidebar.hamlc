@@ -1,0 +1,24 @@
+%a{href: '/admin/questions'}
+  %input.btn.btn-primary.span3{type: "button", id: "questions_manage",value: "Управление вопросами"}
+%a{href: '/admin/steps'}
+  %input.btn.btn-primary.span3{type: "button", id: "steps_manage",value: "Управление этапами"}
+%a{href: '/admin/users'}
+  %input.btn.btn-primary.span3{type: "button", id: "users_manage",value: "Управление пользователями"}
+%a{href: '/admin/parameters/rules/edit'}
+  %input.btn.btn-primary.span3{type: "button", id: "rules_manage",value: "Редактировать «Правила»"}
+%a{href: '/admin/parameters/about/edit'}
+  %input.btn.btn-primary.span3{type: "button", id: "about_manage",value: "Редактировать «Авторы»"}
+%a{href: '/admin/parameters/filter/edit'}
+  %input.btn.btn-primary.span3{type: "button", id: "filter_manage",value: "Редактировать доступ"}
+%a{href: '/admin/parameters/admins/edit'}
+  %input.btn.btn-primary.span3{type: "button", id: "admins_manage",value: "Редактировать админов"}
+%a.no-hover.return_to_main{href: '/'}
+  %input.btn.btn-primary.span3.return_to_main{type: "button", id: "about_manage",value: "<< Вернуться на глагне"}
+
+:javascript
+  jQuery(document).ready(function(){
+    var current = location.href.match(/(questions)|(steps)|(rules)|(about)|(users)/);
+    if (current && current[0]){
+      jQuery("#"+current[0]+"_manage").removeClass('btn-primary').addClass('btn-inverse');
+    }
+  });

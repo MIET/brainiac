@@ -1,0 +1,26 @@
+.admin_body.full_window
+  .row
+    .nav-container.span3
+      !=render :partial => 'admin/menu_sidebar'
+    .container.span7
+      %a{href: '/admin/questions/new'}
+        %input.btn.btn-success{type: "button", id: "add_question",value: "Добавить вопрос"}
+      %table.table.table-hover
+        %caption="Вопросы"
+        %thead
+          %tr
+            %th="Этап"
+            %th="Номер"
+            %th="Вопрос"
+            %th="Редактирование"
+        - if @questions.any?
+          - @questions.each do |question|
+            %tr
+              %td=question[:n_step_number]
+              %td=question[:n_number]
+              %td=question.mini_text
+              %td
+                %a{href: "/admin/questions/#{question[:n_question_id]}/edit"}="Редактировать"
+        - else
+          %tr
+            %td.center-text{colspan: 3}="Нет вопросов"

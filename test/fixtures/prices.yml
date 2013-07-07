@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  true_answers: MyString
+  stats: MyString
+  steps: MyString
+
+two:
+  true_answers: MyString
+  stats: MyString
+  steps: MyString

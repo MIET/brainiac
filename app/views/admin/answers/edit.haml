@@ -1,0 +1,33 @@
+.admin_body.full_window
+  .row
+    .nav-container.span3
+      !=render :partial => 'admin/menu_sidebar'
+    .container.span7
+      %h4="Редактирование ответа"
+      %form{action: "/admin/answers/#{@answer[:n_answer_id]}", method: "POST", name: "delete_question", id: "delete_form" }
+        %input{type: "hidden", name: "_method", value: "delete"}/
+        %input.btn.btn-danger{type: "submit", id: "delete_question",value: "Удалить"}/
+      %form.form-horizontal(action="/admin/answers/#{@answer[:n_answer_id]}" method="POST" name="new_answer" id="new_answer_form")
+        %input{type: "hidden", name: "_method", value: "#{@answer.new_record? ? 'POST' : 'PUT'}"}/
+        .control-group
+          %label.control-label{for: "answer_number"}="Ответ"
+          .controls
+            %input{type: "text", name: "vc_answer", value: "#{@answer[:vc_answer]}"}/
+        .control-group
+          %label.control-label{for: "d_time"}="Время"
+          .controls
+            .input-append.date{id: "datetimepicker1"}
+              %input.required(data-format="dd/MM/yyyy hh:mm:ss" type="text" name='d_time' value="#{@answer[:d_time]}" id='d_time')/
+              %span.add-on
+                %i(data-time-icon="icon-time" data-date-icon="icon-calendar" )
+        .control-group
+          %label.control-label{for: "answer_number"}="Баллы"
+          .controls
+            %input{type: "text", name: "n_scores", value: "#{@answer[:n_scores]}"}/
+        %input.btn.btn-primary.offset5(type="submit" id="add_question" value='Сохранить')/
+:javascript
+  $(function() {
+      jQuery('#datetimepicker1').datetimepicker({
+        language: 'pt-BR'
+      });
+  });

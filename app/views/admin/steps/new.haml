@@ -1,0 +1,16 @@
+.admin_body.full_window
+  .row
+    .nav-container.span3
+      !=render :partial => 'admin/menu_sidebar'
+    .container.span7
+      %h4="Добавление этапа"
+      %form.form-horizontal(action="/admin/steps" method="POST" name="new_step" id="new_step_form")
+        .control-group
+          %label.control-label{for: "step_number"}="Номер"
+          .controls
+            %input{type: "text", name: "number"}/
+        .control-group
+          %label.control-label{for: "step_description"}="Описание"
+          .controls
+            %input{type: "text", name: "description"}/
+        %input.btn.btn-primary.offset5(type="submit" id="add_question" value="Добавить")/

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  parameters: MyString
+  errors: MyString
+  prices: MyString
+  true_answers: MyString
+  stats: MyString
+  steps: MyString
+
+two:
+  parameters: MyString
+  errors: MyString
+  prices: MyString
+  true_answers: MyString
+  stats: MyString
+  steps: MyString

@@ -1,0 +1,2 @@
+class Filter < Parameter
+end

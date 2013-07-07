@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  scores: MyString
+  parameters: MyString
+  errors: MyString
+  prices: MyString
+  true_answers: MyString
+  stats: MyString
+  steps: MyString
+
+two:
+  scores: MyString
+  parameters: MyString
+  errors: MyString
+  prices: MyString
+  true_answers: MyString
+  stats: MyString
+  steps: MyString

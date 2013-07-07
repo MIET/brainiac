@@ -1,0 +1,9 @@
+.admin_body.full_window
+  .row
+    .nav-container.span3
+      !=render :partial => 'admin/menu_sidebar'
+    .container
+      %form.form-horizontal{action: "/admin/questions/#{params[:question_id]}/attach", method: 'POST', enctype: "multipart/form-data"}
+        .control-group
+          %input(type='file' value="Выбрать" name='file[data]' id='file')
+          %input.btn.btn-primary(type="submit" id="save_parameter" value="Сохранить")
