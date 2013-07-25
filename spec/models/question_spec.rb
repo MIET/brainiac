@@ -18,7 +18,7 @@ describe Question do
     @step = Step.find_by_n_step_number(1)
   end
 
-  it 'add' do
+  it 'add question' do
     @step[:vc_step_desc].should eq 'test step'
     question = Question.new(n_step_id: @step.id,
                             n_step_number: @step[:n_step_number],

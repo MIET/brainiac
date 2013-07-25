@@ -7,11 +7,11 @@ class Question < ActiveRecord::Base
   belongs_to :step,
              foreign_key: 'n_step_id'
 
-  belongs_to :true_answer,
+  has_one    :true_answer,
              foreign_key: 'n_question_id',
              :autosave => true
 
-  belongs_to :price,
+  has_one    :price,
              foreign_key: 'n_question_id',
              :autosave => true
 
@@ -31,6 +31,6 @@ class Question < ActiveRecord::Base
 
   def self.current
     now = Time.now.strftime '%Y-%m-%d %H:%M:%S'
-    Question.where("d_time_start < '#{now}'").where("d_time_stop > '#{now}'")
+    Question.where("d_time_start < '#{now}'").where("d_time_stop > '#{now}'").first
   end
 end

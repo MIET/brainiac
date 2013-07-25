@@ -30,41 +30,41 @@
         .control-group
           %label.control-label{for: "question_number"}="Номер вопроса"
           .controls
-            %input{type: "text", id: "question_number", name: "question_number", value: "#{@question.new_record? ? '' : @question[:n_step_number]}"}/
+            %input.required{type: "text", id: "question_number", name: "question_number", value: "#{@question.new_record? ? '' : @question[:n_step_number]}"}/
         .control-group
           %label.control-label{for: "question_text"}="Текст вопроса"
           .controls
-            %input{type: "text", name: "question_text", value: "#{@question.new_record? ? '' : @question[:vc_text]}"}/
+            %input.required{type: "text", name: "question_text", value: "#{@question.new_record? ? '' : @question[:vc_text]}", id: 'question_text'}/
         .control-group
-          %label.control-label{for: "step_description"}="Дата начала"
+          %label.control-label{for: "d_start"}="Дата начала"
           .controls
             .input-append.date{id: "datetimepicker1"}
-              %input(data-format="dd/MM/yyyy hh:mm:ss" type="text" name='d_begin' value="#{@question.new_record? ? '' : @question[:d_time_start]}")/
+              %input.required(data-format="dd/MM/yyyy hh:mm:ss" type="text" name='d_begin' value="#{@question.new_record? ? '' : @question[:d_time_start]}" id='d_start')/
               %span.add-on
                 %i(data-time-icon="icon-time" data-date-icon="icon-calendar" )
         .control-group
-          %label.control-label{for: "step_description"}="Дата окончания"
+          %label.control-label{for: "d_stop"}="Дата окончания"
           .controls
             .input-append.date{id: "datetimepicker2"}
-              %input(data-format="dd/MM/yyyy hh:mm:ss" type="text" name='d_end' value="#{@question.new_record? ? '' : @question[:d_time_stop]}")/
+              %input.required(data-format="dd/MM/yyyy hh:mm:ss" type="text" name='d_end' value="#{@question.new_record? ? '' : @question[:d_time_stop]}" id='d_stop')/
               %span.add-on
                 %i(data-time-icon="icon-time" data-date-icon="icon-calendar")
         .control-group
           %label.control-label{for: "answer"}="Правильный ответ"
           .controls
-            %input{type: "text", name: "answer", value: "#{@question.new_record? ? '' : @question.true_answer[:vc_true_answer]}"}/
+            %input.required{type: "text", name: "answer", value: "#{@question.new_record? ? '' : @question.true_answer[:vc_true_answer]}", id: 'answer'}/
         .control-group
           %label.control-label{for: "bonus_count"}="Количество бонусных ответов"
           .controls
-            %input{type: "text", name: "bonus_count", value: "#{@question.new_record? ? '' : @price[:n_bonus_count]}"}/
+            %input.required{type: "text", name: "bonus_count", value: "#{@question.new_record? ? '' : @price[:n_bonus_count]}", id: 'bonus_count'}/
         .control-group
           %label.control-label{for: "normal_price"}="Баллы без бонуса"
           .controls
-            %input{type: "text", name: "normal_price", value: "#{@question.new_record? ? '' : @price[:n_normal_price]}"}/
+            %input.required{type: "text", name: "normal_price", value: "#{@question.new_record? ? '' : @price[:n_normal_price]}", id: 'normal_price'}/
         .control-group
           %label.control-label{for: "bonus_price"}="Баллы с бонусом"
           .controls
-            %input{type: "text", name: "bonus_price", value: "#{@question.new_record? ? '' : @price[:n_bonus_price]}"}/
+            %input.required{type: "text", name: "bonus_price", value: "#{@question.new_record? ? '' : @price[:n_bonus_price]}", id: 'bonus_price'}/
         .row.offset1
           %a.no-hover{href: '/admin/questions'}
             %input.btn{type: "button", id: "users_manage",value: "Назад"}

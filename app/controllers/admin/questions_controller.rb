@@ -12,7 +12,6 @@ module Admin
 
     def edit
       @question = Question.find(params[:id])
-      @true_answer = @question.true_answer
       @price = @question.price
       @steps = Step.all
     end
@@ -50,10 +49,10 @@ module Admin
     end
 
     def destroy
-      @question = Question.find(params[:id])
-      @question.price.destroy
-      @question.true_answer.destroy
-      @question.destroy
+      #@question = Question.find(params[:id])
+      #@question.price.destroy
+      #@question.true_answer.destroy
+      #@question.destroy
 
       @questions = Question.all
 
