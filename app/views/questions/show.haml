@@ -1,6 +1,13 @@
 .full_window.common_body
-  .message-container
-    .message.offset2.span9= @question[:vc_text]
-  .offset6
-    %a{href: '/'}
-      .back.navigate
+  .row
+    .message-container
+      .message.offset2.span9= @question[:vc_text]
+  .row
+    %form.form-inline.answer-form.container{action: '/answers', method: 'POST', name: 'create_answer', id: 'create_answer_form'}
+      .span2.offset2
+        %input{type: 'text', name: 'answer'}/
+      .span2.offset1
+        .ok.navigate{onclick: '$("#create_answer_form").submit()'}
+      .span2
+        %a{href: '/'}
+          .back.navigate.question

@@ -3,8 +3,10 @@ class MainController < ApplicationController
   include MainHelper
 
   before_filter :check_user
+  skip_before_filter  :verify_authenticity_token
 
   def index
+    cookies.signed[:test] = 1
     params.symbolize_keys!
 
     unless @current_user

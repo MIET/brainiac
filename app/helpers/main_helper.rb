@@ -1,16 +1,12 @@
 module MainHelper
   def check_user
-    if session.empty?
-      return @reload = true
-    end
-
-    if session[:n_user_id]
-      @current_user = User.find_by_n_user_id session[:n_user_id]
+    if cookies.signed[:n_user_id]
+      @current_user = User.find_by_n_user_id cookies.signed[:n_user_id]
       if params[:viewer_id]
-        if params[:viewer_id].to_i==User.find(session[:n_user_id])[:n_vk_id]
+        if params[:viewer_id].to_i==User.find(cookies.signed[:n_user_id])[:n_vk_id]
           return @authorized = true
         else
-          session[:n_user_id] = nil unless params[:viewer_id].to_i==User.find(session[:n_user_id])[:n_vk_id]
+          cookies.signed[:n_user_id] = nil unless params[:viewer_id].to_i==User.find(cookies.signed[:n_user_id])[:n_vk_id]
           return @reload = true
         end
       else
@@ -29,14 +25,14 @@ module MainHelper
 
         @current_user = user
 
-        current_session = Session.find_by_vc_session_key(session[:session_id])
+        #current_cookies.signed = cookies.signed.find_by_vc_cookies.signed_key(cookies.signed[:cookies.signed_id])
 
-        if !current_session && session[:session_id]
-          current_session = Session.new(vc_session_key: session[:session_id],n_user_id: user.id,vc_access_token: params[:access_token], d_time_start: Time.now)
-          current_session.save
-        end
+        #if !current_cookies.signed && cookies.signed[:cookies.signed_id]
+        #  current_cookies.signed = cookies.signed.new(vc_cookies.signed_key: cookies.signed[:cookies.signed_id],n_user_id: user.id,vc_access_token: params[:access_token], d_time_start: Time.now)
+        #  current_cookies.signed.save
+        #end
 
-        session[:n_user_id] = user[:n_user_id]
+        cookies.signed[:n_user_id] = user[:n_user_id]
         @authorized = true
       else
         @authorized = false

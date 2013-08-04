@@ -1,13 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require_self
  *= require_tree .
  */
@@ -86,8 +77,17 @@
 
   &:hover
     background: url("buttons/back_l.jpg") no-repeat
+    background-size: cover
+    height: 40px
+    width: 120px
   &:active
     background: url("buttons/back_d.jpg") no-repeat
+    background-size: cover
+    height: 40px
+    width: 120px
+
+  &.question
+    margin-top: 0px
 
 .admin
   height: 50px
@@ -97,6 +97,16 @@
   &:active
     background: url("buttons/admin_d.jpg") no-repeat
 
+.ok
+  background: url("buttons/ok.jpg")
+  //margin-top: 450px
+  height: 40px
+
+  &:active
+    background: url("buttons/ok_d.jpg") no-repeat
+    background-size: cover
+    height: 40px
+
 .navigate
   height: 60px
   background-size: contain
@@ -104,6 +114,9 @@
   border: 0
   cursor: pointer
   margin-left: 15px
+
+  &.back
+    height: 40px
 
 a
   outline: none
@@ -129,3 +142,6 @@ body
 
 .center-text
   text-align: center
+
+.answer-form
+  margin-top: 470px

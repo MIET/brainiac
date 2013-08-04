@@ -1,11 +1,15 @@
 class QuestionsController < ApplicationController
   def index
     @question = Question.current
-    #TODO Проверка второго ответа должна быть здесь
+
     if @question.nil?
-      render 'questions/no_questions'
+      render :no_questions
     else
-      render 'questions/show'
+      if Answer.find_by_n_user_id(cookies.signed[:n_user_id]).nil?
+        render :show
+      else
+        render :accepted
+      end
     end
   end
 end
