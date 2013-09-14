@@ -25,6 +25,7 @@ Brainiac::Application.routes.draw do
     resources :steps
     resources :parameters
     resources :users
+    resources :answers
 
   end
 

@@ -6,6 +6,7 @@ module Admin
 
     def edit
       @user = User.find(params[:id])
+      @answers = @user.answers
     end
   end
 end

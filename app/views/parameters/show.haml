@@ -1,0 +1,10 @@
+.full_window.common_body
+  - if @reload
+    %input.reload_action{type: 'hidden', name: 'reload', value: 'true'}
+  .row
+    .message-container
+      .message.offset2.span9= @parameter[:vc_value]
+  .row
+    .span2.offset7
+      %a{href: '/'}
+        .back.navigate

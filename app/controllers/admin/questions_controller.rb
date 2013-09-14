@@ -49,10 +49,11 @@ module Admin
     end
 
     def destroy
-      #@question = Question.find(params[:id])
+      @question = Question.find(params[:id])
+      @question.answers.each(&:destroy)
       #@question.price.destroy
-      #@question.true_answer.destroy
-      #@question.destroy
+      @question.true_answer.destroy
+      @question.destroy
 
       @questions = Question.all
 

@@ -13,9 +13,8 @@
 
 :javascript
   jQuery(document).ready(function(){
-    var current = location.href.match(/(questions)|(steps)|(rules)|(about)|(users)/)[0];
-    if (current){
-      console.log(jQuery("#"+current+"_manage").removeClass('btn-primary').addClass('btn-inverse'));
+    var current = location.href.match(/(questions)|(steps)|(rules)|(about)|(users)/);
+    if (current && current[0]){
+      console.log(jQuery("#"+current[0]+"_manage").removeClass('btn-primary').addClass('btn-inverse'));
     }
-    console.log(current);
   });

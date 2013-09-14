@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
       if Answer.find_by_n_user_id(cookies.signed[:n_user_id]).nil?
         render :show
       else
-        render :accepted
+        render 'answers/accepted'
       end
     end
   end

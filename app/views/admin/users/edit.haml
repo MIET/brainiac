@@ -21,7 +21,8 @@
                 %td=answer.question[:n_number]
                 %td=answer[:vc_answer]
                 %td=answer[:d_time]
-                %td=answer[:n_scores]
+                %td
+                  %a{href: "/admin/answers/#{answer[:n_answer_id]}/edit"}=answer[:n_scores]
           - else
             %tr
               %td.center-text{colspan: 5}="У пользователя нет ответов"

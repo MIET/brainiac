@@ -17,6 +17,6 @@ class AnswersController < ApplicationController
     @answer = Answer.new(params)
     @answer[:n_user_id] = cookies.signed[:n_user_id]
     @answer.save
-    render 'main/index'
+    render 'accepted'
   end
 end

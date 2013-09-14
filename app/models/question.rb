@@ -33,4 +33,9 @@ class Question < ActiveRecord::Base
     now = Time.now.strftime '%Y-%m-%d %H:%M:%S'
     Question.where("d_time_start < '#{now}'").where("d_time_stop > '#{now}'").first
   end
+
+  def self.closed
+    now = Time.now.strftime '%Y-%m-%d %H:%M:%S'
+    Question.where("d_time_stop < '#{now}'").first
+  end
 end

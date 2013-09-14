@@ -8,13 +8,10 @@ module Admin
       @step = Step.new
     end
 
-    # GET /questions/1/edit
     def edit
       @step = Step.find(params[:id])
     end
 
-    # POST /questions
-    # POST /questions.json
     def create
       Step.new(n_step_number: params[:number], vc_step_desc: params[:description]).save
 

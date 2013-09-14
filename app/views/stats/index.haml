@@ -1,0 +1,28 @@
+.full_window.common_body
+  - if @reload
+    %input.reload_action{type: 'hidden', name: 'reload', value: 'true'}
+  .row
+    .span7.offset1
+      %table.table.stats_table
+        %caption="Ответы пользователя "
+        %thead
+          %tr
+            %th="Этап"
+            %th="Номер вопроса"
+            %th="Ответ"
+            %th="Время ответа"
+            %th="Баллы"
+        - if @answers && @answers.any?
+          - @answers.each do |answer|
+            %tr
+              %td=answer.question[:n_step_id]
+              %td=answer.question[:n_number]
+              %td=answer[:vc_answer]
+              %td=answer[:d_time]
+              %td=answer[:n_scores]
+        - else
+          %tr
+            %td.center-text{colspan: 5}="Нет ответов"
+    .offset7
+      %a{href: '/'}
+        .back.navigate
