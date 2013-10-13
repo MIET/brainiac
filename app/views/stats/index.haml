@@ -18,7 +18,7 @@
               %td=answer.question.step[:n_step_number]
               %td=answer.question[:n_number]
               %td=answer[:vc_answer]
-              %td=answer[:d_time]
+              %td=answer[:d_time].to_s
               %td=answer[:n_scores]
         - else
           %tr

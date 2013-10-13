@@ -15,8 +15,8 @@ class Answer < ActiveRecord::Base
     self[:vc_answer] = params[:answer]
     self[:n_question_id] = @question.id
     self[:d_time] = Time.now.in_time_zone('Europe/Moscow')
-    if params[:answer] == @true_answer[:vc_true_answer]
-      if @price[:n_bonus_count] < @question.answers.where(vc_answer: @true_answer[:vc_true_answer]).count
+    if params[:answer].downcase == @true_answer[:vc_true_answer].downcase
+      if @price[:n_bonus_count] > @question.answers.where(vc_answer: @true_answer[:vc_true_answer]).count
         self[:n_scores] = @price[:n_bonus_price]
       else
         self[:n_scores] = @price[:n_normal_price]
@@ -31,7 +31,7 @@ class Answer < ActiveRecord::Base
   end
 
   def closed?
-    question.d_time_stop < Time.now.in_time_zone('Europe/Moscow')
+    question.d_time_stop.gmtime.to_s < Time.now.in_time_zone('Europe/Moscow').to_s
   end
 
   def opened?

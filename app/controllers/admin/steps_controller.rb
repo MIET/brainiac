@@ -1,5 +1,8 @@
 module Admin
   class StepsController < ApplicationController
+    include AdminHelper
+    before_filter :require_auth
+    skip_before_filter  :verify_authenticity_token
     def index
       @steps = Step.all
     end

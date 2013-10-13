@@ -1,5 +1,8 @@
 module Admin
   class ParametersController < ApplicationController
+    include AdminHelper
+    before_filter :require_auth
+    skip_before_filter  :verify_authenticity_token
     def edit
       @parameter = Parameter.find_by_vc_parameter_code(params[:id])
     end
