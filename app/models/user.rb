@@ -32,11 +32,21 @@ class User < ActiveRecord::Base
   end
 
   def has_answer?
-    !!answers.find{|answer| answer[:n_question_id] == Question.last.id}
+    Rails.cache.fetch(id, expires_in: 20.minutes) do
+      !!answers.find{|answer| answer[:n_question_id] == Question.last.id}
+    end
   end
 
   def has_no_answer?
     !has_answer?
+  end
+
+  def has_current_answer?
+    !!answers.find{|answer| answer[:n_question_id] == Question.current.id}
+  end
+
+  def has_no_current_answer?
+    !has_current_answer?
   end
 
   def has_answers?
@@ -49,8 +59,12 @@ class User < ActiveRecord::Base
 
   def self.answered_last
     Rails.cache.fetch(:answered_users, expires_in: 20.minutes ) do
-      Rails.logger.info('Get from base')
-      User.all.delete_if{|user| user.has_no_answer?}
+      users = []
+      last_question = Question.last
+      last_question.answers.each do |answer|
+        users << answer.user
+      end
+      users.sort{|x,y| y.n_total_score <=> x.n_total_score}
     end
   end
 end

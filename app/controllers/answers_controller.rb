@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
   end
 
   def create
-    if @current_user.has_no_answer?
+    if @current_user.has_no_current_answer?
       @answer = Answer.new(params)
       @answer[:n_user_id] = cookies.signed[:n_user_id]
       @answer.save

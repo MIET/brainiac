@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
              foreign_key: 'n_question_id',
              :autosave => true
 
-  scope :from_last, order('d_time_stop')
+  scope :from_last, order('d_time_stop desc')
 
   def renew_attributes(params)
     step = Step.find_by_n_step_number(params[:step_number])
