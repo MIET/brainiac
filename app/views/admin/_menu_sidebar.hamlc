@@ -12,6 +12,8 @@
   %input.btn.btn-primary.span3{type: "button", id: "filter_manage",value: "Редактировать доступ"}
 %a{href: '/admin/parameters/admins/edit'}
   %input.btn.btn-primary.span3{type: "button", id: "admins_manage",value: "Редактировать админов"}
+%a{href: '/admin/answers'}
+  %input.btn.btn-primary.span3{type: "button", id: "answers_manage",value: "Последние ответы"}
 %a.no-hover.return_to_main{href: '/'}
   %input.btn.btn-primary.span3.return_to_main{type: "button", id: "about_manage",value: "<< Вернуться на глагне"}
 

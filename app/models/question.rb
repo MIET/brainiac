@@ -15,6 +15,8 @@ class Question < ActiveRecord::Base
              foreign_key: 'n_question_id',
              :autosave => true
 
+  scope :from_last, order('d_time_stop')
+
   def renew_attributes(params)
     step = Step.find_by_n_step_number(params[:step_number])
     self[:n_step_id] = step[:n_step_id]
@@ -31,12 +33,22 @@ class Question < ActiveRecord::Base
 
   def self.current
     now = Time.now.in_time_zone('Europe/Moscow').strftime '%Y-%m-%d %H:%M:%S'
-    Question.where("d_time_start < '#{now}'").where("d_time_stop > '#{now}'").first
+    @answers = Rails.cache.fetch(:current_question, expires_in: 15.minutes ) do
+      Rails.logger.info('Get from base')
+      Question.where("d_time_start < '#{now}'").where("d_time_stop > '#{now}'").first
+    end
   end
 
   def self.closed
     now = Time.now.in_time_zone('Europe/Moscow').strftime '%Y-%m-%d %H:%M:%S'
     Question.where("d_time_stop < '#{now}'").first
+  end
+
+  def self.last
+    Rails.cache.fetch(:last_question, expires_in: 1.hours ) do
+      Rails.logger.info('Get from base')
+      Question.from_last.first
+    end
   end
 
   def mini_text

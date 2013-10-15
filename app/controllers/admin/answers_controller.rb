@@ -16,5 +16,11 @@ module Admin
       @answer.user.refresh_stats
       redirect_to '/admin/users'
     end
+
+    def index
+      @users = User.answered_last
+
+      render 'admin/users/index'
+    end
   end
 end

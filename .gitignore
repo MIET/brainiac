@@ -4,3 +4,4 @@ log
 .rvmrc
 config/database.yml
 public/attachments/*
+public/assets/*
