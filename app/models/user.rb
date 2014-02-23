@@ -61,6 +61,7 @@ class User < ActiveRecord::Base
     Rails.cache.fetch(:answered_users, expires_in: 20.minutes ) do
       users = []
       last_question = Question.last
+      return [] if last_question.nil?
       last_question.answers.each do |answer|
         users << answer.user
       end
