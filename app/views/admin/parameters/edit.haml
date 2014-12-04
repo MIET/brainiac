@@ -3,10 +3,10 @@
     .nav-container.span3
       !=render :partial => 'admin/menu_sidebar'
     .container
-      %form.form-horizontal{action: "/admin/parameters/#{@parameter[:vc_parameter_code]}", method: "POST"}
-        %input{type: "hidden",value: "PUT", name: "_method"}/
+      %form.form-horizontal{action: "/admin/parameters/#{@parameter.vc_parameter_code}", method: :post}
+        %input{type: :hidden,value: :put, name: '_method'}/
         .control-group
-          %label{for: "vc_value"}="Текст параметра"
+          %label{for: :vc_value}='Текст параметра'
           .controls
-            %textarea{id: "vc_value", name: "vc_value"}="#{@parameter[:n_value].present? ? @parameter[:n_value] : @parameter[:vc_value]}"
-          %input.btn.btn-primary.offset3(type="submit" id="save_parameter" value="Сохранить")/
+            %textarea{id: :vc_value, name: :vc_value}="#{@parameter.n_value || @parameter.vc_value}"
+          %input.btn.btn-primary.offset3{type: :submit, id: 'save_parameter', value: 'Сохранить'}/

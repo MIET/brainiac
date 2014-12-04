@@ -20,19 +20,19 @@ module Admin
     end
 
     def create
-      step = Step.find_by_n_step_number(params[:step_number])
-      @question = Question.new(n_step_id: step[:n_step_id],
-                               n_step_number: params[:step_number],
+      step = Step.find_by(:step_number, (params[:step_number]))
+      @question = Question.new(step_id: step[:step_id],
+                               step_number: params[:step_number],
                                n_number: params[:question_number],
                                vc_text: params[:question_text],
                                vc_type: "text",
-                               d_time_start: params[:d_begin],
-                               d_time_stop: params[:d_end])
+                               d_time_start: params[:d_time_start],
+                               d_time_stop: params[:d_time_stop])
 
       @question.save
-      @true_answer = TrueAnswer.new(n_question_id: @question[:n_question_id],
-                                    vc_true_answer: params[:answer]).save
-      @price       = Price.new(n_question_id: @question[:n_question_id],
+      @true_answer = TrueAnswer.new(question_id: @question[:question_id],
+                                    true_answer: params[:answer]).save
+      @price       = Price.new(question_id: @question[:question_id],
                                n_bonus_count: params[:bonus_count],
                                n_bonus_price: params[:bonus_price],
                                n_normal_price: params[:normal_price]).save

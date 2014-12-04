@@ -3,19 +3,23 @@
     .nav-container.span3
       !=render :partial => 'admin/menu_sidebar'
     .container.span7
-      %h4=@step.new_record? ? "Добавление этапа" : "Сохранение этапа"
-      - if !@step.new_record?
-        %form{action: "/admin/steps/#{@step.new_record? ? '' : @step[:n_step_id]}", method: "POST", name: "delete_question", id: "delete_form" }
-          %input{type: "hidden", name: "_method", value: "delete"}/
-          %input.btn.btn-danger{type: "submit", id: "delete_question",value: "Удалить"}/
-      %form.form-horizontal(action="/admin/steps/#{@step.new_record? ? '' : @step[:n_step_id]}" method="POST" name="new_step" id="new_step_form")
-        %input{type: "hidden", name: "_method", value: "#{@step.new_record? ? 'POST' : 'PUT'}"}/
+      - is_new_step = @step.new_record?
+      %h4=is_new_step ? 'Добавление этапа' : 'Сохранение этапа'
+      - if !is_new_step
+        - #TODO Change to form helper. Remove _method
+        %form{action: "/admin/steps/#{is_new_step ? '' : @step.id}", method: :post, name: :delete_question, id: :delete_form }
+          %input{type: :hidden, name: '_method', value: :delete}/
+          %input.btn.btn-danger{type: :submit, id: :delete_question, value: 'Удалить'}/
+      %form.form-horizontal{action: "/admin/steps/#{is_new_step ? '' : @step.id}", method: :post, name: :new_step, id: :new_step_form}
+        %input{type: :hidden, name: '_method', value: "#{is_new_step ? :post : :put}"}/
         .control-group
-          %label.control-label{for: "step_number"}="Номер"
+          %label.control-label{for: :step_number}
+            ='Номер'
           .controls
-            %input{type: "text", name: "n_step_number", value: "#{@step.new_record? ? '' : @step[:n_step_number]}"}/
+            %input{type: :text, name: :step_number, value: "#{is_new_step ? '' : @step.step_number}"}/
         .control-group
-          %label.control-label{for: "step_description"}="Описание"
+          %label.control-label{for: :step_description}
+            ='Описание'
           .controls
-            %input{type: "text", name: "vc_step_desc", value: "#{@step.new_record? ? '' : @step[:vc_step_desc]}"}/
-        %input.btn.btn-primary.offset5(type="submit" id="add_question" value="#{@step.new_record? ? 'Добавить' : 'Сохранить'}")/
+            %input{type: :text, name: :step_desc, value: "#{is_new_step ? '' : @step.vc_step_desc}"}/
+        %input.btn.btn-primary.offset5{type: :submit, id: :add_question, value: "#{is_new_step ? 'Добавить' : 'Сохранить'}"}/

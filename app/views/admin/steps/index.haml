@@ -4,21 +4,22 @@
       !=render :partial => 'admin/menu_sidebar'
     .container.span7
       %a{href: '/admin/steps/new'}
-        %input.btn.btn-success{type: "button", id: "add_question",value: "Добавить этап"}
+        %input.btn.btn-success{type: :button, id: :add_question, value: 'Добавить этап'}
       %table.table.table-hover
-        %caption="Этапы "
+        %caption='Этапы '
         %thead
           %tr
-            %th="Этап"
-            %th="Описание"
-            %th="Редактирование"
+            %th='Этап'
+            %th='Описание'
+            %th='Редактирование'
         - if @steps && @steps.any?
           - @steps.each do |step|
             %tr
-              %td=step[:n_step_number]
-              %td=step[:vc_step_desc]
+              %td=step.step_number
+              %td=step.vc_step_desc
               %td
-                %a{href: "/admin/steps/#{step[:n_step_id]}/edit"}="Редактировать"
+                %a{href: "/admin/steps/#{step.id}/edit"}
+                  ='Редактировать'
         - else
           %tr
-            %td.center-text{colspan: 2}="Нет этапов"
+            %td.center-text{colspan: 2}='Нет этапов'

@@ -16,7 +16,11 @@ module Admin
     end
 
     def create
-      Step.new(n_step_number: params[:number], vc_step_desc: params[:description]).save
+      @step = Step.new
+
+      @step.renew_attributes(params.permit(:number, :step_desc))
+
+      Step.new(step_number: params[:number], vc_step_desc: params[:step_desc]).save
 
       @steps = Step.all
 

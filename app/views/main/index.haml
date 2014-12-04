@@ -1,17 +1,17 @@
 .main_body.full_window
   - if @reload
-    %input.reload_action{type: 'hidden', name: 'reload', value: 'true'}
+    %input.reload_action{type: :hidden, name: :reload, value: 'true'}
   .offset6
     .row.first_button.span4
       .navigate
-        %a{href: "/questions"}
+        %a{href: '/questions'}
           .question.navigate
-        %a{href: "/stats"}
+        %a{href: '/stats'}
           .stats.navigate
-        %a{href: "/parameters/rules"}
+        %a{href: '/parameters/rules'}
           .rules.navigate
-        %a{href: "/parameters/about"}
+        %a{href: '/parameters/about'}
           .about.navigate
         - if @current_user.admin?
-          %a{href: "/admins"}
+          %a{href: '/admins'}
             .admin.offset1

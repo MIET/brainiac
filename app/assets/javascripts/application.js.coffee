@@ -25,6 +25,3 @@ ping = ->
   request = $.get '/'
   request.success (data) -> $('body').append "Successfully got the page again."
   request.error (jqXHR, textStatus, errorThrown) -> $('body').append "AJAX Error: ${textStatus}."
-#  location.reload()
-
-#setInterval(ping, 1000)

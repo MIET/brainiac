@@ -5,11 +5,11 @@
         .question_content.user_parameter
           - if File.exist?("#{Rails.root}/public/attachments/pic_#{@question.id}.jpg")
             %img.attach{src: "/attachments/pic_#{@question.id}.jpg"}
-          = @question[:vc_text]
+          = @question.vc_text
   .row
-    %form.form-inline.answer-form.container{action: '/answers', method: 'POST', name: 'create_answer', id: 'create_answer_form'}
+    %form.form-inline.answer-form.container{action: '/answers', method: :post, name: :create_answer, id: :create_answer_form}
       .span2.offset2
-        %input{type: 'text', name: 'answer'}/
+        %input{type: :text, name: 'answer[vc_answer]'}/
       .span2.offset1
         .ok.navigate{onclick: '$("#create_answer_form").submit()'}
       .span2

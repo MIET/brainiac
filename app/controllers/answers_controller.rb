@@ -10,11 +10,11 @@ class AnswersController < ApplicationController
 
   def create
     if @current_user.has_no_current_answer?
-      @answer = Answer.new(params)
-      @answer[:n_user_id] = cookies.signed[:n_user_id]
+      @answer = Answer.accept(params.require(:answer).permit(:vc_answer).merge(user_id: cookies.signed[:user_id]))
       @answer.save
       @answer.user.refresh_stats
     end
-    render 'accepted'
+
+    render :accepted
   end
 end

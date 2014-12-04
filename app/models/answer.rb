@@ -1,37 +1,48 @@
 class Answer < ActiveRecord::Base
-  self.primary_key = "n_answer_id"
+  self.primary_key = 'answer_id'
 
   belongs_to :user,
-             foreign_key: 'n_user_id'
+             foreign_key: :user_id
 
   belongs_to :question,
-             foreign_key: 'n_question_id'
+             foreign_key: :question_id
 
-  def initialize(params)
-    super()
+  delegate :price, to: :question
+
+  def self.accept(attributes)
     @question = Question.current
-    @price = @question.price
-    @true_answer = @question.true_answer
-    self[:vc_answer] = params[:answer]
-    self[:n_question_id] = @question.id
-    self[:d_time] = Time.now.in_time_zone('Europe/Moscow')
-    if params[:answer].downcase == @true_answer[:vc_true_answer].downcase
-      if @price[:n_bonus_count] > @question.answers.where(vc_answer: @true_answer[:vc_true_answer]).count
-        self[:n_scores] = @price[:n_bonus_price]
-      else
-        self[:n_scores] = @price[:n_normal_price]
-      end
-    else
-      self[:n_scores] = 0
-    end
+
+    @answer = @question.answers.build(vc_answer: attributes[:vc_answer], user_id: attributes[:user_id], d_time: Time.now)
+
+    @answer.n_scores = @answer.calc_scores
+  end
+
+  def calc_scores
+    is_correct? ? correct_answer_cost : 0
+  end
+
+  def correct_answer_cost
+    need_bonus? ? price.n_bonus_price : price.n_normal_price
+  end
+
+  def need_bonus?
+    price.n_bonus_count > question.answers.where(vc_answer: true_answer.true_answer).count
+  end
+
+  def is_correct?
+    vc_answer.downcase == question.true_answer.downcase
+  end
+
+  def update_attributes(new_attributes)
+    self.attributes = new_attributes
   end
 
   def self.in_stats(user_id)
-    Answer.where(n_user_id: user_id).delete_if(&:opened?)
+    where(user_id: user_id).delete_if(&:opened?)
   end
 
   def closed?
-    question.d_time_stop.gmtime.to_s < Time.now.in_time_zone('Europe/Moscow').to_s
+    question.d_time_stop < Time.now
   end
 
   def opened?

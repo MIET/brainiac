@@ -1,11 +1,11 @@
 .full_window.common_body
   .row
     .message-container
-      .message.offset2.span9= @question[:vc_text]
+      .message.offset2.span9= @question.vc_text
   .row
-    %form.form-inline.answer-form.container{action: "/admin/questions/#{@question[:n_question_id]}/edit", method: 'GET', name: 'create_answer', id: 'create_answer_form'}
+    %form.form-inline.answer-form.container{action: "/admin/questions/#{@question[:question_id]}/edit", method: :get, name: :create_answer, id: :create_answer_form}
       .span2.offset2
-        %input{type: 'text', name: 'answer'}/
+        %input{type: :text, name: :answer}/
       .span2.offset1
         .ok.navigate{onclick: '$("#create_answer_form").submit()'}
       .span2

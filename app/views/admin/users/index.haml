@@ -4,21 +4,23 @@
       !=render :partial => 'admin/menu_sidebar'
     .container.span7.users_list
       %table.table.table-hover
-        %caption="Пользователи "
+        %caption='Пользователи '
         %thead
           %tr
-            %th="Идентификатор"
-            %th="Имя"
-            %th="Баллы"
-            %th="Редактирование"
+            %th='Идентификатор'
+            %th='Имя'
+            %th='Баллы'
+            %th='Редактирование'
         - if @users && @users.any?
           - @users.each do |user|
             %tr
-              %td=user[:n_vk_id]
-              %td="#{user[:vc_first_name]} #{user[:vc_last_name]}"
-              %td=user[:n_total_score] || 0
+              %td=user.n_vk_id
+              %td="#{user.first_name} #{user.last_name}"
+              %td=user.total_score || 0
               %td
-                %a{href: "/admin/users/#{user[:n_user_id]}/edit"}="Редактировать"
+                %a{href: "/admin/users/#{user.id}/edit"}
+                  ='Редактировать'
         - else
           %tr
-            %td.center-text{colspan: 2}="Нет пользователей"
+            %td.center-text{colspan: 2}
+              ='Нет пользователей'

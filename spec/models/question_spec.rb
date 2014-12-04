@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Question do
   before(:all) do
-    @step = Step.new(n_step_number: 1, vc_step_desc: 'test step')
+    @step = Step.new(step_number: 1, vc_step_desc: 'test step')
     @step.save
 
-    Question.new(n_step_id: @step.id,
-                 n_step_number: @step[:n_step_number],
+    Question.new(step_id: @step.id,
+                 step_number: @step[:step_number],
                  n_number: 1,
                  vc_type: 'text',
                  vc_text: 'test new question',
@@ -15,13 +15,13 @@ describe Question do
   end
 
   before(:each) do
-    @step = Step.find_by_n_step_number(1)
+    @step = Step.find_by(:step_number, 1)
   end
 
   it 'add question' do
     @step[:vc_step_desc].should eq 'test step'
-    question = Question.new(n_step_id: @step.id,
-                            n_step_number: @step[:n_step_number],
+    question = Question.new(step_id: @step.id,
+                            step_number: @step[:step_number],
                             n_number: 2,
                             vc_type: 'text',
                             vc_text: 'test question',
