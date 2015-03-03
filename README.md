@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/MIET/brainiac/badges/gpa.svg)](https://codeclimate.com/github/MIET/brainiac)
+
 Brainiac on Rails
 ==============
 This web-application used in National Research University of Electronic Technology (Russia, Moscow) for event "Brainiac" in social network "Vkontakte".
